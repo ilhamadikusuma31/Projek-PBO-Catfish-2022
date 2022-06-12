@@ -110,10 +110,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Kolam.aspx" />
     <Content Include="Lele.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Kolam.aspx.cs">
+      <DependentUpon>Kolam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Kolam.aspx.designer.cs">
+      <DependentUpon>Kolam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Lele.aspx.cs">
       <DependentUpon>Lele.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -121,8 +129,13 @@
     <Compile Include="Lele.aspx.designer.cs">
       <DependentUpon>Lele.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Aktivitas.cs" />
+    <Compile Include="Models\Karyawan.cs" />
     <Compile Include="Models\Kolam.cs" />
     <Compile Include="Models\Lele.cs" />
+    <Compile Include="Models\Panen.cs" />
+    <Compile Include="Models\Pembibitan.cs" />
+    <Compile Include="Models\Perawatan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlDBHelper.cs" />
   </ItemGroup>

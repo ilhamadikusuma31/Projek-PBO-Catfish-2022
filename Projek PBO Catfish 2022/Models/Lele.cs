@@ -40,10 +40,10 @@ namespace Projek_PBO_Catfish_2022.Models
 
         public void updateLele()
         {
-            string query = "UPDATE lele SET nama =:nama::text WHERE id =:id::integer;";
+            string query = "UPDATE lele SET nama =@nama::text WHERE id =:id::integer;";
             ExecuteNonQuery(query,
-                new NpgsqlParameter(":nama", this.nama),
-                new NpgsqlParameter(":id", this.id)
+                new NpgsqlParameter("@nama", this.nama),
+                new NpgsqlParameter("@id", this.id)
                 );
         }
 
@@ -53,5 +53,13 @@ namespace Projek_PBO_Catfish_2022.Models
             string query = "DELETE FROM lele WHERE id = :id::integer; ";
             ExecuteNonQuery(query, new NpgsqlParameter(":id", this.id));
         }
+
+        //public DataTable getNamaLeleById()
+        //{
+        //    string query = "SELECT nama FROM lele WHERE id = @id;";
+        //    DataTable dt = ExecuteQuery(query,new NpgsqlParameter("@id", this.id));
+        //    return dt;
+            
+        //}
     }
 }
