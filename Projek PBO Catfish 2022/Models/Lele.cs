@@ -26,7 +26,7 @@ namespace Projek_PBO_Catfish_2022.Models
 
         public void createLele()
         {
-            string query = "INSERT INTO lele (nama) values ('{0}');";
+            string query = "INSERT INTO lele (nama_lele) values ('{0}');";
             query = string.Format(query, this.nama);
             ExecuteNonQuery(query);
         }
@@ -40,7 +40,7 @@ namespace Projek_PBO_Catfish_2022.Models
 
         public void updateLele()
         {
-            string query = "UPDATE lele SET nama =@nama::text WHERE id =:id::integer;";
+            string query = "UPDATE lele SET nama_lele =@nama::text WHERE id_lele =@id::integer;";
             ExecuteNonQuery(query,
                 new NpgsqlParameter("@nama", this.nama),
                 new NpgsqlParameter("@id", this.id)
@@ -50,7 +50,7 @@ namespace Projek_PBO_Catfish_2022.Models
 
         public void deleteLele()
         {
-            string query = "DELETE FROM lele WHERE id = :id::integer; ";
+            string query = "DELETE FROM lele WHERE id_lele = :id::integer; ";
             ExecuteNonQuery(query, new NpgsqlParameter(":id", this.id));
         }
 
@@ -59,7 +59,7 @@ namespace Projek_PBO_Catfish_2022.Models
         //    string query = "SELECT nama FROM lele WHERE id = @id;";
         //    DataTable dt = ExecuteQuery(query,new NpgsqlParameter("@id", this.id));
         //    return dt;
-            
+
         //}
     }
 }

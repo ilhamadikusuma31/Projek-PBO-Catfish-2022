@@ -52,7 +52,7 @@
                         </div>
                         <div style="clear: right;"></div>
                         <asp:GridView ID="GridView2" CssClass="table" runat="server" AutoGenerateColumns="False" Width="500px"
-                            DataKeyNames="id,nama,jumlah" OnRowCommand="GridView1_RowCommand" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
+                            DataKeyNames="id_kolam,nama_kolam,jumlah_lele,nama_lele" OnRowCommand="GridView1_RowCommand" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
                             <AlternatingRowStyle BackColor="#CCCCCC" />
                             <Columns>
                                 <asp:TemplateField HeaderText="No">
@@ -62,12 +62,22 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Nama">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblNama" runat="server" Text='<%# Bind("nama") %>'></asp:Label>
+                                        <asp:Label ID="lblNama" runat="server" Text='<%# Bind("nama_kolam") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Jumlah">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblJumlah" runat="server" Text='<%# Bind("jumlah") %>'></asp:Label>
+                                        <asp:Label ID="lblJumlah" runat="server" Text='<%# Bind("jumlah_lele") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+<%--                                <asp:TemplateField HeaderText="IdLele">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblIdLele" runat="server" Text='<%# Bind("id_lele") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>--%>
+                                <asp:TemplateField HeaderText="nama Lele">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblNamaLele" runat="server" Text='<%# Bind("nama_lele") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -98,6 +108,8 @@
                             <SortedDescendingHeaderStyle BackColor="#383838" />
                         </asp:GridView>
 
+                        <asp:Label ID="lblmsg" runat="server" ForeColor="Red"></asp:Label>  
+    
                         <br />
                     </asp:Panel>
                     <hr />
@@ -116,11 +128,12 @@
                                 <td>
                                     <asp:TextBox runat="server" ID="tbJumlah" Text=""></asp:TextBox>
                                 </td>
-                                <td>Id lele</td>
+                                <td>Nama Lele</td>
                                 <td>
-                                    <asp:TextBox runat="server" ID="tbIdLele" Text=""></asp:TextBox>
+                                    <asp:DropDownList ID="DropDownListLele" runat="server" Width="100px"></asp:DropDownList>  
                                 </td>
                             </tr>
+                               
                         </table>
                         <br />
                         <asp:Button runat="server" ID="btSimpan" Text="Simpan" OnClick="tombolSimpan_Click" />

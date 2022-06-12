@@ -10,7 +10,7 @@ namespace Projek_PBO_Catfish_2022
 {
     public partial class _Kolam : System.Web.UI.Page
     {
-      
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,8 +24,16 @@ namespace Projek_PBO_Catfish_2022
 
         public void isiData()
         {
-            Kolam k = new Kolam("", "", "", "");
+            Kolam k = new Kolam();
             DataTable dt = k.readKolam();
+
+            Lele l = new Lele();
+            DataTable dt_l = l.readLele();
+            DropDownListLele.DataTextField = dt_l.Columns["nama_lele"].ToString(); // text field name of table dispalyed in dropdown       
+            DropDownListLele.DataValueField = dt_l.Columns["id_lele"].ToString();
+            // to retrive specific  textfield name   
+            DropDownListLele.DataSource = dt_l;      //assigning datasource to the dropdownlist  
+            DropDownListLele.DataBind();  //binding dropdownlist  
             GridView2.DataSource = dt;
             GridView2.DataBind();
         }
@@ -36,19 +44,19 @@ namespace Projek_PBO_Catfish_2022
             int rowIndex = int.Parse(e.CommandArgument.ToString());
 
             //ini didapat dari aspx
-            string id = GridView2.DataKeys[rowIndex]["id"].ToString();
+            string id = GridView2.DataKeys[rowIndex]["id_kolam"].ToString();
 
             if (e.CommandName == "hapus")
             {
                 //intitialize objek baru dari kelas Kolam
                 //parameter nama dikosongin karena untuk hapus gaperlu
-                Kolam l = new Kolam(id, "","","");
-                l.deleteKolam();
+                Kolam k = new Kolam(id);
+                k.deleteKolam();
                 isiData();
             }
             else if (e.CommandName == "ubah")
             {
-                tbNama.Text = GridView2.DataKeys[rowIndex]["nama"].ToString();
+                tbNama.Text = GridView2.DataKeys[rowIndex]["nama_kolam"].ToString();
 
                 //ViewState => Variabel browser client tdk hilang jika tdk pindah form / url
 
@@ -64,9 +72,9 @@ namespace Projek_PBO_Catfish_2022
         {
             string nama = tbNama.Text;
             string jumlah = tbJumlah.Text;
-            string id_lele = tbIdLele.Text;
-            Kolam l = new Kolam("", nama, jumlah, id_lele);
-            l.createKolam();
+            string id_lele = DropDownListLele.Text;
+            Kolam k = new Kolam("", nama, jumlah, id_lele);
+            k.createKolam();
             isiData();
             panelUser.Visible = true;
             panelForm.Visible = false;
@@ -77,13 +85,14 @@ namespace Projek_PBO_Catfish_2022
             string id = ViewState["id"].ToString();
             string nama = tbNama.Text;
             string jumlah = tbJumlah.Text;
-            string id_lele = tbIdLele.Text;
+            string id_lele = DropDownListLele.Text;
 
-            Kolam l = new Kolam(id, nama, jumlah, id_lele);
-            l.updateKolam();
+            Kolam k = new Kolam(id, nama, jumlah, id_lele);
+            k.updateKolam();
             isiData();
             panelUser.Visible = true;
             panelForm.Visible = false;
+            lblmsg.Text = id + nama + jumlah + id_lele;
         }
 
         protected void lbTambah_Click(object sender, EventArgs e)

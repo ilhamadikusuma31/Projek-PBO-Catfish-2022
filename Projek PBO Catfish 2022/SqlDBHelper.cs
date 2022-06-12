@@ -17,6 +17,7 @@ namespace Projek_PBO_Catfish_2022
             connection.ConnectionString = ConfigurationManager.ConnectionStrings["koneksiku"].ToString();
         }
 
+      
         public DataTable ExecuteQuery(string sql)
         {
             DataTable dt = new DataTable();
@@ -37,6 +38,7 @@ namespace Projek_PBO_Catfish_2022
 
             return dt;
         }
+       
 
 
         public DataTable ExecuteQuery(string sql, params NpgsqlParameter[] parameters)

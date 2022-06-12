@@ -36,7 +36,7 @@ namespace Projek_PBO_Catfish_2022
             int rowIndex = int.Parse(e.CommandArgument.ToString());
 
             //ini didapat dari aspx
-            string id = GridView1.DataKeys[rowIndex]["id"].ToString();
+            string id = GridView1.DataKeys[rowIndex]["id_lele"].ToString();
 
             if (e.CommandName == "hapus")
             {
@@ -48,11 +48,11 @@ namespace Projek_PBO_Catfish_2022
             }
             else if (e.CommandName == "ubah")
             {
-                tbNama.Text = GridView1.DataKeys[rowIndex]["nama"].ToString();
+                tbNama.Text = GridView1.DataKeys[rowIndex]["nama_lele"].ToString();
 
                 //ViewState => Variabel browser client tdk hilang jika tdk pindah form / url
 
-                ViewState["id"] = id;
+                ViewState["id_lele"] = id;
                 btSimpan.Visible = false;
                 btUpdate.Visible = true;
                 panelUser.Visible = false;
@@ -73,7 +73,7 @@ namespace Projek_PBO_Catfish_2022
         protected void tombolUpdate_Click(object sender, EventArgs e)
         {
             string nama = tbNama.Text;
-            string id = ViewState["id"].ToString();
+            string id = ViewState["id_lele"].ToString();
 
             Lele l = new Lele(id, nama);
             l.updateLele();

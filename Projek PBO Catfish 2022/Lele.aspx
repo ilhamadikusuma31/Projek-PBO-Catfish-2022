@@ -52,7 +52,7 @@
                         </div>
                         <div style="clear: right;"></div>
                         <asp:GridView ID="GridView1" CssClass="table" runat="server" AutoGenerateColumns="False" Width="500px"
-                            DataKeyNames="id,nama" OnRowCommand="GridView1_RowCommand" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
+                            DataKeyNames="id_lele,nama_lele" OnRowCommand="GridView1_RowCommand" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
                             <AlternatingRowStyle BackColor="#CCCCCC" />
                             <Columns>
                                 <asp:TemplateField HeaderText="No">
@@ -62,7 +62,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Nama">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblNama" runat="server" Text='<%# Bind("nama") %>'></asp:Label>
+                                        <asp:Label ID="lblNama" runat="server" Text='<%# Bind("nama_lele") %>'></asp:Label>
                                         <asp:Label ID="lblNamaa" runat="server" Text='bedanya kalo di aspx ga di looping kayak di html'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
