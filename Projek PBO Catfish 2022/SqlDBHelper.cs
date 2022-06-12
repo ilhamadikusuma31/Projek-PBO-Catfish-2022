@@ -10,7 +10,9 @@ namespace Projek_PBO_Catfish_2022
 {
     public class SqlDBHelper
     {
+        
         private NpgsqlConnection connection;
+
         public SqlDBHelper()
         {
             connection = new NpgsqlConnection();

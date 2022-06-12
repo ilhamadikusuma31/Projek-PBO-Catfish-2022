@@ -21,9 +21,6 @@ namespace Projek_PBO_Catfish_2022.Models
             this.nama = _nama;
         }
 
-
-        //SqlDBHelper objSqlDb = new SqlDBHelper(); => ini ga kepake karena class ini sudah extend
-
         public void createLele()
         {
             string query = "INSERT INTO lele (nama_lele) values ('{0}');";
@@ -54,12 +51,5 @@ namespace Projek_PBO_Catfish_2022.Models
             ExecuteNonQuery(query, new NpgsqlParameter(":id", this.id));
         }
 
-        //public DataTable getNamaLeleById()
-        //{
-        //    string query = "SELECT nama FROM lele WHERE id = @id;";
-        //    DataTable dt = ExecuteQuery(query,new NpgsqlParameter("@id", this.id));
-        //    return dt;
-
-        //}
     }
 }

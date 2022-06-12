@@ -6,7 +6,7 @@ using System.Web;
 namespace Projek_PBO_Catfish_2022.Models
 {
 
-    public class Aktivitas
+    public class Aktivitas:SqlDBHelper
     {
         string id;
         string tanggal;
@@ -15,5 +15,16 @@ namespace Projek_PBO_Catfish_2022.Models
             this.id       = id;
             this.tanggal = tanggal;
         }
+
+        public string getId()
+        {
+            return this.id;
+        }
+        public string getTanggal()
+        {
+            return this.tanggal;
+        }
+
+       
     }
 }

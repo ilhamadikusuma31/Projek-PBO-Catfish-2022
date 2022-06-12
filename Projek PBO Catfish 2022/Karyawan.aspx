@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Kolam.aspx.cs" Inherits="Projek_PBO_Catfish_2022._Kolam" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Karyawan.aspx.cs" Inherits="Projek_PBO_Catfish_2022._Karyawan" %>
 
 <!DOCTYPE html>
 
@@ -21,17 +21,17 @@
 <form id="form1" runat="server">
         <div style="padding: 50px;">
             <asp:MultiView runat="server" ID="mvMain">
-                <asp:View runat="server" ID="vKolam">
+                <asp:View runat="server" ID="vKaryawan">
 
                     <asp:Panel runat="server" ID="panelUser">
-                        <h3 style="text-align: left;">Daftar Kolam
+                        <h3 style="text-align: left;">Daftar Karyawan
                         </h3>
                         <div style="padding: 10px; max-width: 500px; text-align: right;">
                             <asp:LinkButton runat="server" ID="lbTambah" OnClick="lbTambah_Click">Tambah Data</asp:LinkButton>
                         </div>
                         <div style="clear: right;"></div>
                         <asp:GridView ID="GridView2" CssClass="table" runat="server" AutoGenerateColumns="False" Width="500px"
-                            DataKeyNames="id_kolam,nama_kolam,jumlah_lele,nama_lele" OnRowCommand="GridView1_RowCommand" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
+                            DataKeyNames="id_karyawan,nama_karyawan,alamat_karyawan,no_telp_karyawan" OnRowCommand="GridView1_RowCommand" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
                             <AlternatingRowStyle BackColor="#CCCCCC" />
                             <Columns>
                                 <asp:TemplateField HeaderText="No">
@@ -41,17 +41,17 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Nama">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblNama" runat="server" Text='<%# Bind("nama_kolam") %>'></asp:Label>
+                                        <asp:Label ID="lblNama" runat="server" Text='<%# Bind("nama_karyawan") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Jumlah">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblJumlah" runat="server" Text='<%# Bind("jumlah_lele") %>'></asp:Label>
+                                        <asp:Label ID="lblAlamat" runat="server" Text='<%# Bind("alamat_karyawan") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="nama Lele">
                                     <ItemTemplate>
-                                        <asp:Label ID="lblNamaLele" runat="server" Text='<%# Bind("nama_lele") %>'></asp:Label>
+                                        <asp:Label ID="lblNoTelp" runat="server" Text='<%# Bind("no_telp_karyawan") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -61,7 +61,7 @@
                                         <asp:LinkButton runat="server" ID="lbDelete" CommandName="hapus" CommandArgument="<%# Container.DataItemIndex %>" OnClientClick='return confirm("Are you sure you want to delete this item?");'>Delete</asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-
+                                
                             </Columns>
 
                             <FooterStyle BackColor="#CCCCCC" />
@@ -90,13 +90,13 @@
                                 <td>
                                     <asp:TextBox runat="server" ID="tbNama" Text=""></asp:TextBox>
                                 </td>
-                                <td>Jumlah</td>
+                                <td>Alamat</td>
                                 <td>
-                                    <asp:TextBox runat="server" ID="tbJumlah" Text=""></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="tbAlamat" Text=""></asp:TextBox>
                                 </td>
-                                <td>Nama Lele</td>
+                                <td>No Telpon</td>
                                 <td>
-                                    <asp:DropDownList ID="DropDownListLele" runat="server" Width="100px"></asp:DropDownList>  
+                                    <asp:TextBox runat="server" ID="tbNoTelp" Text=""></asp:TextBox>
                                 </td>
                             </tr>
                                

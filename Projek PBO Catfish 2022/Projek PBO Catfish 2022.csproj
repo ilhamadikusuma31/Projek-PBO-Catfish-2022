@@ -110,11 +110,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Karyawan.aspx" />
     <Content Include="Kolam.aspx" />
     <Content Include="Lele.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Karyawan.aspx.cs">
+      <DependentUpon>Karyawan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Karyawan.aspx.designer.cs">
+      <DependentUpon>Karyawan.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Kolam.aspx.cs">
       <DependentUpon>Kolam.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
