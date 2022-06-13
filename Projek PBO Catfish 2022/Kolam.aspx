@@ -1,38 +1,17 @@
-﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Kolam.aspx.cs" Inherits="Projek_PBO_Catfish_2022._Kolam" %>
+﻿<%@ Page Title="Kolam" Language="C#"  MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Kolam.aspx.cs" Inherits="Projek_PBO_Catfish_2022._Kolam" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css" />
-    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
-</head>
-<body>
-
-
-<form id="form1" runat="server">
-        <div style="padding: 50px;">
-            <asp:MultiView runat="server" ID="mvMain">
+<asp:Content ContentPlaceHolderID="MainContent" runat="server">
+    <form id="form" runat="server">
+        <div>
+            <asp:MultiView runat="server" ID="mv">
                 <asp:View runat="server" ID="vKolam">
-
-                    <asp:Panel runat="server" ID="panelUser">
-                        <h3 style="text-align: left;">Daftar Kolam
-                        </h3>
-                        <div style="padding: 10px; max-width: 500px; text-align: right;">
-                            <asp:LinkButton runat="server" ID="lbTambah" OnClick="lbTambah_Click">Tambah Data</asp:LinkButton>
+                    <asp:Panel runat="server" ID="panel">
+                        <h3>Daftar Kolam</h3>
+                        <div >
+                            <asp:LinkButton runat="server" ID="tombolTambahData" OnClick="tombolTambahDataClick" CssClass="btn btn-primary mt-4"><i class="bi bi-plus-circle"></i>Tambah Data</asp:LinkButton>
                         </div>
-                        <div style="clear: right;"></div>
-                        <asp:GridView ID="GridView2" CssClass="table" runat="server" AutoGenerateColumns="False" Width="500px"
-                            DataKeyNames="id_kolam,nama_kolam,jumlah_lele,nama_lele" OnRowCommand="GridView1_RowCommand" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
-                            <AlternatingRowStyle BackColor="#CCCCCC" />
+                        <asp:GridView ID="GridView" CssClass="table table-striped mt-3" runat="server" AutoGenerateColumns="False"
+                            DataKeyNames="id_kolam,nama_kolam,jumlah_lele,nama_lele" OnRowCommand="perintahGridView">
                             <Columns>
                                 <asp:TemplateField HeaderText="No">
                                     <ItemTemplate>
@@ -54,29 +33,15 @@
                                         <asp:Label ID="lblNamaLele" runat="server" Text='<%# Bind("nama_lele") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-
                                 <asp:TemplateField HeaderText="Aksi">
                                     <ItemTemplate>
-                                        <asp:LinkButton runat="server" ID="lbEdit" CommandName="ubah" CommandArgument="<%# Container.DataItemIndex %>">Edit</asp:LinkButton>
-                                        <asp:LinkButton runat="server" ID="lbDelete" CommandName="hapus" CommandArgument="<%# Container.DataItemIndex %>" OnClientClick='return confirm("Are you sure you want to delete this item?");'>Delete</asp:LinkButton>
+                                        <asp:LinkButton CssClass="btn btn-warning" runat="server" ID="lbEdit" CommandName="ubah" CommandArgument="<%# Container.DataItemIndex %>"><i class="bi bi-pencil-square"></i></asp:LinkButton>
+                                        <asp:LinkButton CssClass="btn btn-danger"  runat="server" ID="lbDelete" CommandName="hapus" CommandArgument="<%# Container.DataItemIndex %>" OnClientClick='return confirm("Kamu Yakin Ingin Menghapus?");'><i class="bi bi-trash3"></i></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
                             </Columns>
-
-                            <FooterStyle BackColor="#CCCCCC" />
-                            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-                            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                            <SortedAscendingHeaderStyle BackColor="#808080" />
-                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                            <SortedDescendingHeaderStyle BackColor="#383838" />
                         </asp:GridView>
-
-                        <asp:Label ID="lblmsg" runat="server" ForeColor="Red"></asp:Label>  
-    
-                        <br />
                     </asp:Panel>
                     <hr />
 
@@ -85,31 +50,26 @@
                         <h3>Form Kolam
                         </h3>
                         <table>
-                            <tr>
-                                <td>Nama</td>
-                                <td>
-                                    <asp:TextBox runat="server" ID="tbNama" Text=""></asp:TextBox>
-                                </td>
-                                <td>Jumlah</td>
-                                <td>
-                                    <asp:TextBox runat="server" ID="tbJumlah" Text=""></asp:TextBox>
-                                </td>
-                                <td>Nama Lele</td>
-                                <td>
-                                    <asp:DropDownList ID="DropDownListLele" runat="server" Width="100px"></asp:DropDownList>  
-                                </td>
-                            </tr>
-                               
+                          <div class="mb-3">
+                            <label for="inputNamaKolam" class="form-label mt-5">Nama Kolam</label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="inputNamaKolam" Text=""></asp:TextBox>
+                          </div>
+                            <div class="mb-3">
+                            <label for="inputJumlahLele" class="form-label mt-1">Jumlah Lele</label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="inputJumlahLele" Text="" TextMode="Number"></asp:TextBox>
+                          </div>
+                            <div class="mb-3">
+                            <label for="inputNamaLele" class="form-label mt-1">Nama Lele</label>
+                            <asp:DropDownList ID="DropDownListLele" runat="server" CssClass="btn btn-primary"></asp:DropDownList>  
+                          </div>
                         </table>
-                        <br />
-                        <asp:Button runat="server" ID="btSimpan" Text="Simpan" OnClick="tombolSimpan_Click" />
-                        <asp:Button runat="server" ID="btUpdate" Text="Update" Visible="false" OnClick="tombolUpdate_Click" />
-                        <asp:Button runat="server" ID="btBatal" Text="Batal" Visible="true" OnClick="btBatal_Click" />
+                        <asp:Button runat="server" ID="tombolSimpan" CssClass="btn btn-success" Text="Simpan" OnClick="tombolSimpanClick" />
+                        <asp:Button runat="server" ID="tombolUpdate" cssClass="btn btn-success" Text="Update" Visible="false" OnClick="tombolUpdateClick" />
+                        <asp:Button runat="server" ID="tombolBatal"  CssClass="btn btn-secondary" Text="Batal" Visible="true" OnClick="tombolBatalClick" />
                     </asp:Panel>
-
                 </asp:View>
             </asp:MultiView>
         </div>
     </form>
-</body>
-</html>
+</asp:Content>
+

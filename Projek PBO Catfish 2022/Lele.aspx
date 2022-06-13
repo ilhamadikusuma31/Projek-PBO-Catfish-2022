@@ -11,7 +11,7 @@
                             <asp:LinkButton runat="server" ID="tombolTambahData" OnClick="tombolTambahDataClick" CssClass="btn btn-primary mt-4"><i class="bi bi-plus-circle"></i>Tambah Data</asp:LinkButton>
                         </div>
                         <asp:GridView ID="GridView" CssClass="table table-striped mt-3" runat="server" AutoGenerateColumns="False"
-                            DataKeyNames="id_lele,nama_lele" OnRowCommand="gridViewCommand">
+                            DataKeyNames="id_lele,nama_lele" OnRowCommand="perintahGridView">
                             <Columns>
                                 <asp:TemplateField HeaderText="No">
                                     <ItemTemplate>

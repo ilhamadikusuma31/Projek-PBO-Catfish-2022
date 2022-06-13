@@ -30,7 +30,7 @@ namespace Projek_PBO_Catfish_2022
             GridView.DataBind();
         }
 
-        protected void gridViewCommand(object sender, GridViewCommandEventArgs e)
+        protected void perintahGridView(object sender, GridViewCommandEventArgs e)
         {
 
             int rowIndex = int.Parse(e.CommandArgument.ToString());

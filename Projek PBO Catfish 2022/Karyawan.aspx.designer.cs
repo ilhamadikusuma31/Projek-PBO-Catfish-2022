@@ -15,22 +15,22 @@ namespace Projek_PBO_Catfish_2022
     {
 
         /// <summary>
-        /// form1 control.
+        /// form control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form;
 
         /// <summary>
-        /// mvMain control.
+        /// mv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView mvMain;
+        protected global::System.Web.UI.WebControls.MultiView mv;
 
         /// <summary>
         /// vKaryawan control.
@@ -42,40 +42,31 @@ namespace Projek_PBO_Catfish_2022
         protected global::System.Web.UI.WebControls.View vKaryawan;
 
         /// <summary>
-        /// panelUser control.
+        /// panel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelUser;
+        protected global::System.Web.UI.WebControls.Panel panel;
 
         /// <summary>
-        /// lbTambah control.
+        /// tombolTambahData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbTambah;
+        protected global::System.Web.UI.WebControls.LinkButton tombolTambahData;
 
         /// <summary>
-        /// GridView2 control.
+        /// GridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
-
-        /// <summary>
-        /// lblmsg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblmsg;
+        protected global::System.Web.UI.WebControls.GridView GridView;
 
         /// <summary>
         /// panelForm control.
@@ -87,57 +78,57 @@ namespace Projek_PBO_Catfish_2022
         protected global::System.Web.UI.WebControls.Panel panelForm;
 
         /// <summary>
-        /// tbNama control.
+        /// inputNamaKaryawan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbNama;
+        protected global::System.Web.UI.WebControls.TextBox inputNamaKaryawan;
 
         /// <summary>
-        /// tbAlamat control.
+        /// inputAlamatKaryawan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbAlamat;
+        protected global::System.Web.UI.WebControls.TextBox inputAlamatKaryawan;
 
         /// <summary>
-        /// tbNoTelp control.
+        /// inputNoTelpKaryawan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbNoTelp;
+        protected global::System.Web.UI.WebControls.TextBox inputNoTelpKaryawan;
 
         /// <summary>
-        /// btSimpan control.
+        /// tombolSimpan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btSimpan;
+        protected global::System.Web.UI.WebControls.Button tombolSimpan;
 
         /// <summary>
-        /// btUpdate control.
+        /// tombolUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btUpdate;
+        protected global::System.Web.UI.WebControls.Button tombolUpdate;
 
         /// <summary>
-        /// btBatal control.
+        /// tombolBatal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btBatal;
+        protected global::System.Web.UI.WebControls.Button tombolBatal;
     }
 }

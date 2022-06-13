@@ -17,7 +17,7 @@ namespace Projek_PBO_Catfish_2022
             // Postback: dari dalam form / url dia sendiri
             if (!IsPostBack)
             {
-                mvMain.SetActiveView(vKaryawan);
+                mv.SetActiveView(vKaryawan);
                 isiData();
             }
         }
@@ -25,17 +25,17 @@ namespace Projek_PBO_Catfish_2022
         {
             Karyawan k = new Karyawan();
             DataTable dt = k.readKaryawan();
-            GridView2.DataSource = dt;
-            GridView2.DataBind();
+            GridView.DataSource = dt;
+            GridView.DataBind();
         }
 
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void perintahGridView(object sender, GridViewCommandEventArgs e)
         {
 
             int rowIndex = int.Parse(e.CommandArgument.ToString());
 
             //ini didapat dari aspx
-            string id = GridView2.DataKeys[rowIndex]["id_karyawan"].ToString();
+            string id = GridView.DataKeys[rowIndex]["id_karyawan"].ToString();
 
             if (e.CommandName == "hapus")
             {
@@ -47,58 +47,60 @@ namespace Projek_PBO_Catfish_2022
             }
             else if (e.CommandName == "ubah")
             {
-                tbNama.Text = GridView2.DataKeys[rowIndex]["nama_karyawan"].ToString();
+                inputNamaKaryawan.Text = GridView.DataKeys[rowIndex]["nama_karyawan"].ToString();
+                inputAlamatKaryawan.Text = GridView.DataKeys[rowIndex]["alamat_karyawan"].ToString();
+                inputNoTelpKaryawan.Text = GridView.DataKeys[rowIndex]["no_telp_karyawan"].ToString();
+                //DropDownListLele.Items.FindByValue(id).Selected = true; masih gatau carannya di set sesuai datanya 
 
                 //ViewState => Variabel browser client tdk hilang jika tdk pindah form / url
-
                 ViewState["id"] = id;
-                btSimpan.Visible = false;
-                btUpdate.Visible = true;
-                panelUser.Visible = false;
+                tombolSimpan.Visible = false;
+                tombolUpdate.Visible = true;
+                panel.Visible = false;
                 panelForm.Visible = true;
             }
         }
 
-        protected void tombolSimpan_Click(object sender, EventArgs e)
+        protected void tombolSimpanClick(object sender, EventArgs e)
         {
-            string nama = tbNama.Text;
-            string alamat = tbAlamat.Text;
-            string no_telp = tbNoTelp.Text;
+            string nama     = inputNamaKaryawan.Text;
+            string alamat   = inputAlamatKaryawan.Text;
+            string no_telp  = inputNoTelpKaryawan.Text;
             Karyawan k = new Karyawan("", nama, alamat, no_telp);
             k.createKaryawan();
             isiData();
-            panelUser.Visible = true;
+            panel.Visible = true;
             panelForm.Visible = false;
         }
 
-        protected void tombolUpdate_Click(object sender, EventArgs e)
+        protected void tombolUpdateClick(object sender, EventArgs e)
         {
             string id = ViewState["id"].ToString();
-            string nama = tbNama.Text;
-            string alamat = tbAlamat.Text;
-            string no_telp = tbNoTelp.Text;
+            string nama = inputNamaKaryawan.Text;
+            string alamat = inputAlamatKaryawan.Text;
+            string no_telp = inputNoTelpKaryawan.Text;
 
             Karyawan k = new Karyawan(id, nama, alamat, no_telp);
             k.updateKaryawan();
             isiData();
-            panelUser.Visible = true;
+            panel.Visible = true;
             panelForm.Visible = false;
 
-            lblmsg.Text = id + nama + alamat + no_telp;
+            //lblmsg.Text = id + nama + alamat + no_telp;
         
         }
 
-        protected void lbTambah_Click(object sender, EventArgs e)
+        protected void tombolTambahDataClick(object sender, EventArgs e)
         {
-            panelUser.Visible = false;
+            panel.Visible = false;
             panelForm.Visible = true;
-            btSimpan.Visible = true;
-            btUpdate.Visible = false;
+            tombolSimpan.Visible = true;
+            tombolUpdate.Visible = false;
         }
 
-        protected void btBatal_Click(object sender, EventArgs e)
+        protected void tombolBatalClick(object sender, EventArgs e)
         {
-            panelUser.Visible = true;
+            panel.Visible = true;
             panelForm.Visible = false;
         }
 

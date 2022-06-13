@@ -1,38 +1,17 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Karyawan.aspx.cs" Inherits="Projek_PBO_Catfish_2022._Karyawan" %>
+﻿<%@ Page Title="Karyawan" Language="C#" MasterPageFile="~/Layout.Master" AutoEventWireup="true" CodeBehind="Karyawan.aspx.cs" Inherits="Projek_PBO_Catfish_2022._Karyawan" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css" />
-    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
-</head>
-<body>
-
-
-<form id="form1" runat="server">
-        <div style="padding: 50px;">
-            <asp:MultiView runat="server" ID="mvMain">
+<asp:Content ContentPlaceHolderID="MainContent" runat="server">
+    <form id="form" runat="server">
+        <div>
+            <asp:MultiView runat="server" ID="mv">
                 <asp:View runat="server" ID="vKaryawan">
-
-                    <asp:Panel runat="server" ID="panelUser">
-                        <h3 style="text-align: left;">Daftar Karyawan
-                        </h3>
-                        <div style="padding: 10px; max-width: 500px; text-align: right;">
-                            <asp:LinkButton runat="server" ID="lbTambah" OnClick="lbTambah_Click">Tambah Data</asp:LinkButton>
+                    <asp:Panel runat="server" ID="panel">
+                        <h3>Daftar Karyawan</h3>
+                        <div >
+                            <asp:LinkButton runat="server" ID="tombolTambahData" OnClick="tombolTambahDataClick" CssClass="btn btn-primary mt-4"><i class="bi bi-plus-circle"></i>Tambah Data</asp:LinkButton>
                         </div>
-                        <div style="clear: right;"></div>
-                        <asp:GridView ID="GridView2" CssClass="table" runat="server" AutoGenerateColumns="False" Width="500px"
-                            DataKeyNames="id_karyawan,nama_karyawan,alamat_karyawan,no_telp_karyawan" OnRowCommand="GridView1_RowCommand" CellPadding="3" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px">
-                            <AlternatingRowStyle BackColor="#CCCCCC" />
+                        <asp:GridView ID="GridView" CssClass="table table-striped mt-3" runat="server" AutoGenerateColumns="False"
+                            DataKeyNames="id_karyawan,nama_karyawan,alamat_karyawan,no_telp_karyawan" OnRowCommand="perintahGridView">
                             <Columns>
                                 <asp:TemplateField HeaderText="No">
                                     <ItemTemplate>
@@ -44,72 +23,54 @@
                                         <asp:Label ID="lblNama" runat="server" Text='<%# Bind("nama_karyawan") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Jumlah">
+                                <asp:TemplateField HeaderText="Alamat">
                                     <ItemTemplate>
                                         <asp:Label ID="lblAlamat" runat="server" Text='<%# Bind("alamat_karyawan") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="nama Lele">
+                                <asp:TemplateField HeaderText="No Telp">
                                     <ItemTemplate>
                                         <asp:Label ID="lblNoTelp" runat="server" Text='<%# Bind("no_telp_karyawan") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-
                                 <asp:TemplateField HeaderText="Aksi">
                                     <ItemTemplate>
-                                        <asp:LinkButton runat="server" ID="lbEdit" CommandName="ubah" CommandArgument="<%# Container.DataItemIndex %>">Edit</asp:LinkButton>
-                                        <asp:LinkButton runat="server" ID="lbDelete" CommandName="hapus" CommandArgument="<%# Container.DataItemIndex %>" OnClientClick='return confirm("Are you sure you want to delete this item?");'>Delete</asp:LinkButton>
+                                        <asp:LinkButton CssClass="btn btn-warning" runat="server" ID="lbEdit" CommandName="ubah" CommandArgument="<%# Container.DataItemIndex %>"><i class="bi bi-pencil-square"></i></asp:LinkButton>
+                                        <asp:LinkButton CssClass="btn btn-danger"  runat="server" ID="lbDelete" CommandName="hapus" CommandArgument="<%# Container.DataItemIndex %>" OnClientClick='return confirm("Kamu Yakin Ingin Menghapus?");'><i class="bi bi-trash3"></i></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                
+
                             </Columns>
-
-                            <FooterStyle BackColor="#CCCCCC" />
-                            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-                            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                            <SortedAscendingHeaderStyle BackColor="#808080" />
-                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                            <SortedDescendingHeaderStyle BackColor="#383838" />
                         </asp:GridView>
-
-                        <asp:Label ID="lblmsg" runat="server" ForeColor="Red"></asp:Label>  
-    
-                        <br />
                     </asp:Panel>
                     <hr />
 
 
                     <asp:Panel runat="server" ID="panelForm" Visible="false">
-                        <h3>Form Kolam
+                        <h3>Form Karyawan
                         </h3>
                         <table>
-                            <tr>
-                                <td>Nama</td>
-                                <td>
-                                    <asp:TextBox runat="server" ID="tbNama" Text=""></asp:TextBox>
-                                </td>
-                                <td>Alamat</td>
-                                <td>
-                                    <asp:TextBox runat="server" ID="tbAlamat" Text=""></asp:TextBox>
-                                </td>
-                                <td>No Telpon</td>
-                                <td>
-                                    <asp:TextBox runat="server" ID="tbNoTelp" Text=""></asp:TextBox>
-                                </td>
-                            </tr>
-                               
+                          <div class="mb-3">
+                            <label for="inputNamaKaryawan" class="form-label mt-5">Nama Karyawan</label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="inputNamaKaryawan" Text=""></asp:TextBox>
+                          </div>
+                            <div class="mb-3">
+                            <label for="inputAlamatKaryawan" class="form-label mt-1">Alamat Karyawan</label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="inputAlamatKaryawan" Text=""></asp:TextBox>
+  
+                          </div>
+                            <div class="mb-3">
+                            <label for="inputNoTelpKaryawan" class="form-label mt-1">No Telpon</label>
+                            <asp:TextBox runat="server" CssClass="form-control" ID="inputNoTelpKaryawan" Text="" TextMode="Number"></asp:TextBox>
+                          </div>
                         </table>
-                        <br />
-                        <asp:Button runat="server" ID="btSimpan" Text="Simpan" OnClick="tombolSimpan_Click" />
-                        <asp:Button runat="server" ID="btUpdate" Text="Update" Visible="false" OnClick="tombolUpdate_Click" />
-                        <asp:Button runat="server" ID="btBatal" Text="Batal" Visible="true" OnClick="btBatal_Click" />
+                        <asp:Button runat="server" ID="tombolSimpan" CssClass="btn btn-success" Text="Simpan" OnClick="tombolSimpanClick" />
+                        <asp:Button runat="server" ID="tombolUpdate" cssClass="btn btn-success" Text="Update" Visible="false" OnClick="tombolUpdateClick" />
+                        <asp:Button runat="server" ID="tombolBatal"  CssClass="btn btn-secondary" Text="Batal" Visible="true" OnClick="tombolBatalClick" />
                     </asp:Panel>
-
                 </asp:View>
             </asp:MultiView>
         </div>
     </form>
-</body>
-</html>
+</asp:Content>
+
