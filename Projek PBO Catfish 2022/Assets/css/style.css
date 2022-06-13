@@ -1,0 +1,41 @@
+body {
+    background-color: aqua;
+}
+
+.bi-house-door {
+    width: 20px;
+}
+
+.carousel {
+    margin-top: 10px;
+}
+
+.content.row.card.card-berita {
+    transition: 0s;
+}
+
+.card {
+    transition: 0.5s;
+}
+
+.card:hover {
+    transform: scale(1.01, 1.01);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.sidebar {
+    background-color: rgb(211, 147, 147);
+}
+
+/* Hide Calendar Icon In Chrome */
+/* input[type="date"]::-webkit-inner-spin-button,
+  input[type="date"]::-webkit-calendar-picker-indicator {
+      display: none;
+      -webkit-appearance: none;
+  } */
+
+
+/* .row{
+    padding-bottom: 2px;
+  } */

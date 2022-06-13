@@ -15,22 +15,22 @@ namespace Projek_PBO_Catfish_2022
     {
 
         /// <summary>
-        /// form1 control.
+        /// form control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form;
 
         /// <summary>
-        /// mvMain control.
+        /// mv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView mvMain;
+        protected global::System.Web.UI.WebControls.MultiView mv;
 
         /// <summary>
         /// vLele control.
@@ -42,31 +42,31 @@ namespace Projek_PBO_Catfish_2022
         protected global::System.Web.UI.WebControls.View vLele;
 
         /// <summary>
-        /// panelUser control.
+        /// panel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelUser;
+        protected global::System.Web.UI.WebControls.Panel panel;
 
         /// <summary>
-        /// lbTambah control.
+        /// tombolTambahData control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbTambah;
+        protected global::System.Web.UI.WebControls.LinkButton tombolTambahData;
 
         /// <summary>
-        /// GridView1 control.
+        /// GridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView GridView;
 
         /// <summary>
         /// panelForm control.
@@ -78,39 +78,39 @@ namespace Projek_PBO_Catfish_2022
         protected global::System.Web.UI.WebControls.Panel panelForm;
 
         /// <summary>
-        /// tbNama control.
+        /// inputNama control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbNama;
+        protected global::System.Web.UI.WebControls.TextBox inputNama;
 
         /// <summary>
-        /// btSimpan control.
+        /// tombolSimpan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btSimpan;
+        protected global::System.Web.UI.WebControls.Button tombolSimpan;
 
         /// <summary>
-        /// btUpdate control.
+        /// tombolUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btUpdate;
+        protected global::System.Web.UI.WebControls.Button tombolUpdate;
 
         /// <summary>
-        /// btBatal control.
+        /// tombolBatal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btBatal;
+        protected global::System.Web.UI.WebControls.Button tombolBatal;
     }
 }

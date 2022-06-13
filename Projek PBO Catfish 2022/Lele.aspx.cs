@@ -17,7 +17,7 @@ namespace Projek_PBO_Catfish_2022
             // Postback: dari dalam form / url dia sendiri
             if (!IsPostBack)
             {
-                mvMain.SetActiveView(vLele);
+                mv.SetActiveView(vLele);
                 isiData();
             }
         }
@@ -26,17 +26,17 @@ namespace Projek_PBO_Catfish_2022
         {
             Lele l = new Lele();
             DataTable dt = l.readLele();
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+            GridView.DataSource = dt;
+            GridView.DataBind();
         }
 
-        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gridViewCommand(object sender, GridViewCommandEventArgs e)
         {
 
             int rowIndex = int.Parse(e.CommandArgument.ToString());
 
             //ini didapat dari aspx
-            string id = GridView1.DataKeys[rowIndex]["id_lele"].ToString();
+            string id = GridView.DataKeys[rowIndex]["id_lele"].ToString();
 
             if (e.CommandName == "hapus")
             {
@@ -48,79 +48,54 @@ namespace Projek_PBO_Catfish_2022
             }
             else if (e.CommandName == "ubah")
             {
-                tbNama.Text = GridView1.DataKeys[rowIndex]["nama_lele"].ToString();
+                inputNama.Text = GridView.DataKeys[rowIndex]["nama_lele"].ToString();
 
                 //ViewState => Variabel browser client tdk hilang jika tdk pindah form / url
 
                 ViewState["id_lele"] = id;
-                btSimpan.Visible = false;
-                btUpdate.Visible = true;
-                panelUser.Visible = false;
+                tombolSimpan.Visible = false;
+                tombolUpdate.Visible = true;
+                panel.Visible = false;
                 panelForm.Visible = true;
             }
         }
 
-        protected void tombolSimpan_Click(object sender, EventArgs e)
+        protected void tombolSimpanClick(object sender, EventArgs e)
         {
-            string nama = tbNama.Text;
+            string nama = inputNama.Text;
             Lele l = new Lele("", nama);
             l.createLele();
             isiData();
-            panelUser.Visible = true;
+            panel.Visible = true;
             panelForm.Visible = false;
         }
 
-        protected void tombolUpdate_Click(object sender, EventArgs e)
+        protected void tombolUpdateClick(object sender, EventArgs e)
         {
-            string nama = tbNama.Text;
+            string nama = inputNama.Text;
             string id = ViewState["id_lele"].ToString();
 
             Lele l = new Lele(id, nama);
             l.updateLele();
             isiData();
-            panelUser.Visible = true;
+            panel.Visible = true;
             panelForm.Visible = false;
         }
 
-        protected void lbTambah_Click(object sender, EventArgs e)
+        protected void tombolTambahDataClick(object sender, EventArgs e)
         {
-            panelUser.Visible = false;
+            panel.Visible = false;
             panelForm.Visible = true;
-            btSimpan.Visible = true;
-            btUpdate.Visible = false;
+            tombolSimpan.Visible = true;
+            tombolUpdate.Visible = false;
         }
 
-        protected void btBatal_Click(object sender, EventArgs e)
+        protected void tombolBatalClick(object sender, EventArgs e)
         {
-            panelUser.Visible = true;
+            panel.Visible = true;
             panelForm.Visible = false;
         }
 
-        protected void btnSelect_Click(object sender, EventArgs e)
-        {
-            try /* Select After Validations*/
-            {
-                using (NpgsqlConnection connection = new NpgsqlConnection())
-                {
-                    connection.ConnectionString = ConfigurationManager.ConnectionStrings["koneksiku"].ToString();
-                    connection.Open();
-                    NpgsqlCommand cmd = new NpgsqlCommand();
-                    cmd.Connection = connection;
-                    cmd.CommandText = "Select * from Lele";
-                    cmd.CommandType = CommandType.Text;
-                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    cmd.Dispose();
-                    connection.Close();
-
-                    GridView1.DataSource = dt;
-                    GridView1.DataBind();
-
-
-                }
-            }
-            catch (Exception ex) { }
-        }
     }
 }
+
