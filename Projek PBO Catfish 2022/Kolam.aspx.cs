@@ -31,9 +31,10 @@ namespace Projek_PBO_Catfish_2022
             DataTable dt_l = l.readLele();
             DropDownListLele.DataTextField = dt_l.Columns["nama_lele"].ToString(); // text field name of table dispalyed in dropdown       
             DropDownListLele.DataValueField = dt_l.Columns["id_lele"].ToString();
-            // to retrive specific  textfield name   
             DropDownListLele.DataSource = dt_l;      //assigning datasource to the dropdownlist  
-            DropDownListLele.DataBind();  //binding dropdownlist  
+            DropDownListLele.DataBind();  //binding dropdownlist
+                                          //
+
             GridView.DataSource = dt;
             GridView.DataBind();
         }

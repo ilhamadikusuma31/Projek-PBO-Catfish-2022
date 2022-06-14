@@ -1802,6 +1802,9 @@
     <Content Include="Karyawan.aspx" />
     <Content Include="Kolam.aspx" />
     <Content Include="Lele.aspx" />
+    <Content Include="Perawatan.aspx" />
+    <Content Include="Pembibitan.aspx" />
+    <Content Include="Panen.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1840,6 +1843,27 @@
     <Compile Include="Models\Panen.cs" />
     <Compile Include="Models\Pembibitan.cs" />
     <Compile Include="Models\Perawatan.cs" />
+    <Compile Include="Perawatan.aspx.cs">
+      <DependentUpon>Perawatan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Perawatan.aspx.designer.cs">
+      <DependentUpon>Perawatan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pembibitan.aspx.cs">
+      <DependentUpon>Pembibitan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pembibitan.aspx.designer.cs">
+      <DependentUpon>Pembibitan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Panen.aspx.cs">
+      <DependentUpon>Panen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Panen.aspx.designer.cs">
+      <DependentUpon>Panen.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlDBHelper.cs" />
   </ItemGroup>

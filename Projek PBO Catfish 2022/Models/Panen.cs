@@ -12,44 +12,57 @@ namespace Projek_PBO_Catfish_2022.Models
 
         string id_karyawan;
         string id_kolam;
+        string id_panen;
 
-        public Panen(string id, string tanggal, string id_karyawan, string id_kolam) : base(id, tanggal)
+        public Panen(string id = null, string tanggal = null, string id_karyawan=null, string id_kolam=null) : base(id, tanggal)
         {
             this.id_karyawan = id_karyawan;
-            this.id_kolam = id_kolam;
+            this.id_kolam    = id_kolam;
+            this.id_panen    = "3";
         }
-        public void createPanen()
+
+
+        public override void createAktivitas()
         {
-            string query = "INSERT INTO Panen (tanggal,id_karyawan, id_kolam ) values ('{0}','{1}');";
-            query = string.Format(query, getTanggal()  ,this.id_karyawan, this.id_kolam);
+            string query = "INSERT INTO Aktivitas (tanggal,id_karyawan, id_kolam, id_jenis_aktivitas ) values ('{0}','{1}','{2}','{3}');";
+            query = string.Format(query ,getTanggal(), this.id_karyawan, this.id_kolam, this.id_panen);
             ExecuteNonQuery(query);
         }
 
-        public DataTable readPanen()
+        public override DataTable readAktivitas()
         {
-            string query = "SELECT * FROM panen p LEFT JOIN karyawan k ON p.id_karyawan = k.id_karyawan;";
+            //string query = "SELECT * FROM aktivitas p JOIN karyawan k ON p.id_karyawan = k.id_karyawan;";
+            string query = @"SELECT * FROM 
+                             kolam ko JOIN aktivitas a ON ko.id_kolam = a.id_kolam 
+                             JOIN karyawan ka ON ka.id_karyawan = a.id_karyawan WHERE id_jenis_aktivitas = 3; ";
             DataTable dt = ExecuteQuery(query);
             return dt;
         }
 
-        public void updatePanen()
+        public override void updateAktivitas()
         {
-            string query = @"UPDATE panen SET 
-                             tanggal = @tgl::text,
-                             id_karyawan = @id_krywn::text, 
-                             id_kolam = @id_klm::integer
-                             WHERE id_panen =@id::integer;";
+            string query = @"UPDATE aktivitas 
+                             SET 
+                             tanggal            = @tgl,
+                             id_karyawan        = @id_krywn::integer, 
+                             id_kolam           = @id_klm::integer,
+                             id_jenis_aktivitas = @id_p::integer,
+                             WHERE 
+                             id_aktivitas = @id_aktvts::integer;";
             ExecuteNonQuery(query,
+                new NpgsqlParameter("@id_aktvts", getId()),
                 new NpgsqlParameter("@tgl", getTanggal()),
                 new NpgsqlParameter("@id_krywn", this.id_karyawan),
-                new NpgsqlParameter("@id_klm", this.id_kolam)
+                new NpgsqlParameter("@id_klm", this.id_kolam),
+                new NpgsqlParameter("@id_p", this.id_panen)
                 );
+            //System.Diagnostics.Debug.WriteLine(getId()+"|"+getTanggal()+"|"+id_karyawan+"|"+id_kolam+"|"+id_panen);
         }
 
 
-        public void deletePanen()
+        public override void deleteAktivitas()
         {
-            string query = "DELETE FROM panen WHERE id_panen = :id::integer; ";
+            string query = "DELETE FROM aktivitas WHERE id_aktivitas = :id::integer; ";
             ExecuteNonQuery(query, new NpgsqlParameter(":id", getId()));
         }
 
